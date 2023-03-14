@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DisneyCharacter</string>
+    <string name="toolbar_text">Disney Character</string>
+
 </resources>
