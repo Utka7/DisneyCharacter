@@ -12,7 +12,7 @@
     android:text="Disney Character"
     android:textColor="#ffffff"
     android:textSize="46sp"
-        android:fontFamily="@font/disneypark"/>
+        android:fontFamily="@font/fdisneypark"/>
 
 
 
