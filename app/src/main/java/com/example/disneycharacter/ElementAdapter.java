@@ -42,6 +42,7 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ViewHold
         ItemElement element = elements.get(position);
         holder.iconView.setImageResource(element.getIcon());
         holder.nameView.setText(element.getName());
+//        holder.contentView.setText(element.getContent());
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,12 +67,15 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView iconView;
         final TextView nameView;
+//        final TextView contentView;
 
         final ConstraintLayout parentLayout;
         ViewHolder(View view){
             super(view);
             iconView = view.findViewById(R.id.icon);
             nameView = view.findViewById(R.id.name);
+//            contentView = view.findViewById(R.id.content);
+
             parentLayout = itemView.findViewById(R.id.parent_layout);
 
         }
