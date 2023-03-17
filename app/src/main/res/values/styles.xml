@@ -3,4 +3,50 @@
     <style name="disneyfontstyle" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/disneypark</item>
     </style>
+
+    <style name="ContentText" parent="@android:style/TextAppearance.Small">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+
+    </style>
+
+    <style name="NameStyleContent" parent="@android:style/TextAppearance.Small">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <style name="NameStyleList" parent="@android:style/ImageApperance">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+
+    </style>
+
+
+    <style name="ImgContent" parent="@android:style/TextAppearance.Small">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <style name="circular">
+        <item name="cornerSize">60%</item>
+    </style>
 </resources>

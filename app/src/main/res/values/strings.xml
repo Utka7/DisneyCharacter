@@ -30,5 +30,7 @@
     <string name="timon">Тимон</string>
     <string name="timon_content">Тимон немного эгоистичен и трусоват (это очень ярко показано в сериале), но когда вопрос стоит о спасении его друзей, он настоящий герой и готов ради их защиты отдать свою жизнь, ведь у него несмотря ни на что доброе сердце. Тимон хитрый, умный и является авантюристом во многих своих планов.</string>
     <string name="sometext">Тимон вывы т вылоа ывавыа п рповы рповыро аовы р аыврпаып ра ырврып м пп по</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

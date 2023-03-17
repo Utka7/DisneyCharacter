@@ -1,5 +1,6 @@
 package com.example.disneycharacter;
 
+import static android.app.PendingIntent.getActivity;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.annotation.SuppressLint;
@@ -12,8 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v4.app.*;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -51,9 +55,11 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ViewHold
 
                 Toast.makeText(mContext, elements.get(position).getName(), Toast.LENGTH_SHORT).show();
 
+
                 Intent intent = new Intent(mContext, FactsActivity.class);
                 intent.putExtra("icon", elements.get(position).getIcon());
                 intent.putExtra("name", elements.get(position).getName());
+                intent.putExtra("content", elements.get(position).getContent());
                 mContext.startActivity(intent);
             }
         });
@@ -67,14 +73,14 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView iconView;
         final TextView nameView;
-//        final TextView contentView;
+        final TextView contentView;
 
         final ConstraintLayout parentLayout;
         ViewHolder(View view){
             super(view);
             iconView = view.findViewById(R.id.icon);
             nameView = view.findViewById(R.id.name);
-//            contentView = view.findViewById(R.id.content);
+            contentView = view.findViewById(R.id.content);
 
             parentLayout = itemView.findViewById(R.id.parent_layout);
 
