@@ -29,13 +29,7 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="330dp"
-            android:layout_height="190dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-
+            style="@style/ImgContent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

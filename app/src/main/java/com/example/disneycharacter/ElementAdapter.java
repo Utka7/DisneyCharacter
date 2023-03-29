@@ -25,9 +25,7 @@ import java.util.List;
 public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ViewHolder>{
     private final LayoutInflater inflater;
     private final List<ItemElement> elements;
-
     private final Context mContext;
-
 
     ElementAdapter(Context context, List<ItemElement> elements) {
         this.elements = elements;
@@ -46,15 +44,10 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ViewHold
         ItemElement element = elements.get(position);
         holder.iconView.setImageResource(element.getIcon());
         holder.nameView.setText(element.getName());
-//        holder.contentView.setText(element.getContent());
-
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicked on: " + elements.get(position).getName());
-
-                Toast.makeText(mContext, elements.get(position).getName(), Toast.LENGTH_SHORT).show();
-
 
                 Intent intent = new Intent(mContext, FactsActivity.class);
                 intent.putExtra("icon", elements.get(position).getIcon());
@@ -74,14 +67,12 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ViewHold
         final ImageView iconView;
         final TextView nameView;
         final TextView contentView;
-
         final ConstraintLayout parentLayout;
         ViewHolder(View view){
             super(view);
             iconView = view.findViewById(R.id.icon);
             nameView = view.findViewById(R.id.name);
             contentView = view.findViewById(R.id.content);
-
             parentLayout = itemView.findViewById(R.id.parent_layout);
 
         }

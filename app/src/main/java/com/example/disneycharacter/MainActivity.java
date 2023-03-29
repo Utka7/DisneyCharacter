@@ -43,15 +43,10 @@ public class MainActivity extends AppCompatActivity {
         if(parser.parse(xpp))
         {
             ArrayList<String> str = parser.getStrings();
-            for(String prod: parser.getStrings()){
-                Log.d("XML", prod);
-
-            }
             ArrayList<Integer> arr = loadDrawables(R.drawable.class);
             arr.remove(3);
             arr.remove(3);
 
-            Log.d("XML",  String.valueOf(arr.get(0)));
             for (int i = 0, j = 0; i < str.size()-1; i+=2, j++){
                 elements.add(new ItemElement (str.get(i), str.get(i + 1), arr.get(j)));
             }
@@ -68,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
             try {
                 drawableId = field.getInt(clz);
                 arr.add(drawableId);
-                Log.d("XML",  String.valueOf(drawableId));
-
             } catch (Exception e) {
                 continue;
             }

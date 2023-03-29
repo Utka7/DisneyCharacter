@@ -25,7 +25,7 @@
 
     </style>
 
-    <style name="NameStyleList" parent="@android:style/ImageApperance">
+    <style name="NameStyleList" parent="@android:style/TextAppearance.Small">
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:typeface">serif</item>
@@ -35,14 +35,13 @@
     </style>
 
 
-    <style name="ImgContent" parent="@android:style/TextAppearance.Small">
-        <item name="android:textSize">36sp</item>
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:typeface">serif</item>
+    <style name="ImgContent">
+        <item name="android:layout_width">330dp</item>
+        <item name="android:layout_height">190dp</item>
         <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginTop">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
-        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
 
     </style>
 
