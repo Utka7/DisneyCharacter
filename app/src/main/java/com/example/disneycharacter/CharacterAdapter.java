@@ -42,7 +42,6 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
 
         Picasso.get().load(character.getImageUrl()).into(holder.iconView);
 
-//        holder.iconView.setImageResource(character.getIcon());
         holder.nameView.setText(character.getName());
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
@@ -51,9 +50,8 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
                 Log.d(TAG, "onClick: clicked on: " + characters.get(position).getName());
 
                 Intent intent = new Intent(mContext, FactsActivity.class);
-//                intent.putExtra("icon", characters.get(position).getIcon());
-//                intent.putExtra("name", characters.get(position).getName());
-//                intent.putExtra("content", characters.get(position).getContent());
+                intent.putExtra("character", character);
+
                 mContext.startActivity(intent);
             }
         });

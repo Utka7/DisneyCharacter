@@ -1,6 +1,8 @@
 package com.example.disneycharacter;
 
-public class Character {
+import java.io.Serializable;
+
+public class Character implements Serializable {
 
     private int id;
     private String url;

@@ -47,15 +47,144 @@
             app:layout_constraintTop_toBottomOf="@+id/icon" />
 
         <TextView
-            android:id="@+id/content"
+            android:id="@+id/film"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Название"
+            android:text="Фильмы:"
             style="@style/ContentText"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name"/>
 
+        <TextView
+            android:id="@+id/film_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Нет данных"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/film"/>
+
+        <TextView
+            android:id="@+id/shortFilms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Короткометражки:"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/film_data"/>
+
+        <TextView
+            android:id="@+id/shortFilms_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Нет данных"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shortFilms"/>
+
+        <TextView
+            android:id="@+id/tvShows"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ТВ шоу:"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shortFilms_data"/>
+
+        <TextView
+            android:id="@+id/tvShows_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Нет данных"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvShows"/>
+
+        <TextView
+            android:id="@+id/videoGames"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Видеоигры:"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvShows_data"/>
+
+        <TextView
+            android:id="@+id/videoGames_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Нет данных"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/videoGames"/>
+
+        <TextView
+            android:id="@+id/parkAttractions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Парки аттракционов:"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/videoGames_data"/>
+
+        <TextView
+            android:id="@+id/parkAttractions_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Нет данных"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parkAttractions"/>
+
+        <TextView
+            android:id="@+id/allies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Друзья:"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parkAttractions_data"/>
+
+        <TextView
+            android:id="@+id/allies_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Нет данных"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/allies"/>
+
+        <TextView
+            android:id="@+id/enemies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Враги:"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/allies_data"/>
+
+        <TextView
+            android:id="@+id/enemies_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Нет данных"
+            style="@style/ContentText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enemies"/>
     </LinearLayout>
 
     </ScrollView>
