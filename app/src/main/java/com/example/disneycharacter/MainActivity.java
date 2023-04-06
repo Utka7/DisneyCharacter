@@ -98,9 +98,6 @@ public class MainActivity extends AppCompatActivity {
         return arr;
     }
 
-//    public void onSuccess(String responseInString) {
-//        ElementAdapter.updateCardPreviewRecycler(monsterConverter.toMonsterClassDtoList(responseInString));
-//    }
     void get() throws IOException{
 
         client = new OkHttpClient();
