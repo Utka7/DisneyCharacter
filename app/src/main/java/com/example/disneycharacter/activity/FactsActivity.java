@@ -1,19 +1,17 @@
-package com.example.disneycharacter;
+package com.example.disneycharacter.activity;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.disneycharacter.entity.Character;
+import com.example.disneycharacter.R;
 import com.squareup.picasso.Picasso;
 
 public class FactsActivity extends AppCompatActivity {

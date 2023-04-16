@@ -1,9 +1,14 @@
-package com.example.disneycharacter;
+package com.example.disneycharacter.entity;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.io.Serializable;
-
+@Entity(tableName = "characters")
+@TypeConverters({StringArrayConverter.class})
 public class Character implements Serializable {
-
+    @PrimaryKey
     private int id;
     private String url;
     private String name;
@@ -12,7 +17,6 @@ public class Character implements Serializable {
     private String[] shortFilms;
     private String[] tvShows;
     private String[] videoGames;
-//    private String algiment;
     private String[] parkAttractions;
     private String[] allies;
     private String[] enemies;
@@ -96,14 +100,6 @@ public class Character implements Serializable {
     public void setVideoGames(String[] videoGames) {
         this.videoGames = videoGames;
     }
-
-//    public String getAlgiment() {
-//        return algiment;
-//    }
-//
-//    public void setAlgiment(String algiment) {
-//        this.algiment = algiment;
-//    }
 
     public String[] getParkAttractions() {
         return parkAttractions;

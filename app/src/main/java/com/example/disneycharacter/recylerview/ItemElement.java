@@ -1,4 +1,4 @@
-package com.example.disneycharacter;
+package com.example.disneycharacter.recylerview;
 
 public class ItemElement {
     private String name;

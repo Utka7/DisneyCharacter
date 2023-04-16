@@ -1,4 +1,4 @@
-package com.example.disneycharacter;
+package com.example.disneycharacter.api;
 
 import androidx.annotation.NonNull;
 
@@ -32,7 +32,6 @@ public class LoadCharacters {
             @Override public void onResponse(@NonNull Call call, @NonNull Response
                     response) throws IOException {
                 String responseBody = response.body().string();
-//                System.out.println(responseBody);
 
             }
         });
