@@ -1,5 +1,8 @@
 package com.example.disneycharacter.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
@@ -7,7 +10,7 @@ import androidx.room.TypeConverters;
 import java.io.Serializable;
 @Entity(tableName = "characters")
 @TypeConverters({StringArrayConverter.class})
-public class Character implements Serializable {
+public class Character implements Serializable, Parcelable {
     @PrimaryKey
     private int id;
     private String url;
@@ -35,6 +38,20 @@ public class Character implements Serializable {
         this.parkAttractions = parkAttractions;
         this.allies = allies;
         this.enemies = enemies;
+    }
+
+    protected Character(Parcel in) {
+        id = in.readInt();
+        url = in.readString();
+        name = in.readString();
+        imageUrl = in.readString();
+        films = in.createStringArray();
+        shortFilms = in.createStringArray();
+        tvShows = in.createStringArray();
+        videoGames = in.createStringArray();
+        parkAttractions = in.createStringArray();
+        allies = in.createStringArray();
+        enemies = in.createStringArray();
     }
 
     public int getId() {
@@ -124,4 +141,36 @@ public class Character implements Serializable {
     public void setEnemies(String[] enemies) {
         this.enemies = enemies;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(url);
+        dest.writeString(name);
+        dest.writeString(imageUrl);
+        dest.writeStringArray(films);
+        dest.writeStringArray(shortFilms);
+        dest.writeStringArray(tvShows);
+        dest.writeStringArray(videoGames);
+        dest.writeStringArray(parkAttractions);
+        dest.writeStringArray(allies);
+        dest.writeStringArray(enemies);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Character> CREATOR = new Creator<Character>() {
+        @Override
+        public Character createFromParcel(Parcel in) {
+            return new Character(in);
+        }
+
+        @Override
+        public Character[] newArray(int size) {
+            return new Character[size];
+        }
+    };
 }
