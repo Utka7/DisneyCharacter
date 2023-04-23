@@ -1,19 +1,21 @@
-package com.example.disneycharacter.activity;
+package com.example.disneycharacter.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import com.example.disneycharacter.entity.Character;
-import com.example.disneycharacter.recylerview.ItemElement;
-import com.example.disneycharacter.api.LoadCharacters;
 import com.example.disneycharacter.R;
+import com.example.disneycharacter.entity.Character;
 import com.example.disneycharacter.recylerview.adapter.CharacterAdapter;
 import com.example.disneycharacter.sqlite.AppDatabase;
 import com.example.disneycharacter.sqlite.CharacterDao;
@@ -34,35 +36,47 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class ListFragment extends Fragment {
+    private RecyclerView recyclerView;
 
-    ArrayList<ItemElement> elements = new ArrayList<ItemElement>();
-    ArrayList<Character> characters = new ArrayList<>();
-    private Toolbar mToolbar;
-    Context context = this;
     private static final String API_URL = "https://api.disneyapi.dev/characters";
-    OkHttpClient client ;
+
+    public ListFragment(){
+        super(R.layout.fragment_list);
+    }
 
     @Override
-    protected void onCreate (Bundle saveInstanceElement) {
-        super.onCreate(saveInstanceElement);
-        setContentView (R.layout.activity_main);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
+        try {
+            get();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return view;
+    }
 
-        LoadCharacters l = new LoadCharacters();
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        mToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
 
-//        try {
-//            get();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            get();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Установка LayoutManager, если не указан в XML
+//        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 
     void get() throws IOException, InterruptedException {
+        Context context = requireContext();
         CountDownLatch latch = new CountDownLatch(1);
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(API_URL).build();
@@ -84,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         latch.await(); // ожидание ответа от API
 
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app.db").build();
+        AppDatabase db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "app.db").build();
         Executor executor = Executors.newSingleThreadExecutor();
 
         executor.execute(() -> {
@@ -94,17 +108,20 @@ public class MainActivity extends AppCompatActivity {
             if (!characters.isEmpty()) {
                 Log.d("MyTag", "This is DB try");
                 // Данные есть в базе данных, загружаем их и показываем пользователю
-                runOnUiThread(() -> {
-                    RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                View view = getView();
+                if (view != null) {
+                    RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
                     CharacterAdapter adapter = new CharacterAdapter(context, characters);
                     recyclerView.setAdapter(adapter);
-                });
+                }
+
             }
         });
     }
 
 
     private List<Character> handleResponse(String responseBody) {
+        Context context = requireContext();
         Gson gson = new Gson();
         JsonObject json = gson.fromJson(responseBody, JsonObject.class);
         JsonArray dataArray = json.getAsJsonArray("data");
@@ -134,25 +151,25 @@ public class MainActivity extends AppCompatActivity {
             characters.add(character);
         }
 
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "app.db").build();
+        AppDatabase db = Room.databaseBuilder(context.getApplicationContext(),AppDatabase.class, "app.db").build();
         Executor executor = Executors.newSingleThreadExecutor();
         CharacterDao characterDao = db.characterDao();
         executor.execute(() -> {
             // Проверяем наличие данных в базе данных
             if (characterDao.countCharacters() == 0) {
                 // Данных в базе данных нет, вставляем данные
-//                characterDao.insertAll(characters);
                 db.characterDao().insertAll(characters.toArray(new Character[0]));
 
             }
         });
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        CharacterAdapter adapter = new CharacterAdapter(context, characters);
-        recyclerView.setAdapter(adapter);
+        View view = getView();
+        if (view != null) {
+            RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+            CharacterAdapter adapter = new CharacterAdapter(context, characters);
+            recyclerView.setAdapter(adapter);
+        }
 
         return characters;
     }
-
 }
-

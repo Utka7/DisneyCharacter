@@ -54,6 +54,8 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.41.2.1'
+    implementation group: 'androidx.fragment', name: 'fragment', version: '1.5.6'
+
 
 
 
