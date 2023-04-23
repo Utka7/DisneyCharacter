@@ -5,6 +5,8 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +14,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.disneycharacter.entity.Character;
 import com.example.disneycharacter.activity.FactsActivity;
 import com.example.disneycharacter.R;
+import com.example.disneycharacter.fragment.ContentFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -50,12 +56,20 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked on: " + characters.get(position).getName());
+                // Создание и открытие фрагмента с детальной информацией о персонаже
+                ContentFragment contentFragment = new ContentFragment();
+                // Передача данных о выбранном персонаже в фрагмент
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("character", (Parcelable) character);
+                contentFragment.setArguments(bundle);
 
-                Intent intent = new Intent(mContext, FactsActivity.class);
-                intent.putExtra("character", character);
+                FragmentManager fragmentManager = ((AppCompatActivity) mContext).getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.fragment_container_view, contentFragment) // R.id.container - это id контейнера, в котором вы хотите отобразить фрагмент
+                        .addToBackStack(null) // Добавление фрагмента в back stack
+                        .commit();
 
-                mContext.startActivity(intent);
+
             }
         });
     }

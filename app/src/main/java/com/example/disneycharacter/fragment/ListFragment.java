@@ -71,8 +71,6 @@ public class ListFragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        // Установка LayoutManager, если не указан в XML
-//        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 
     void get() throws IOException, InterruptedException {
