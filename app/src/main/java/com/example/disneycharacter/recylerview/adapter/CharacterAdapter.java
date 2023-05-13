@@ -65,8 +65,8 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
 
                 FragmentManager fragmentManager = ((AppCompatActivity) mContext).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.fragment_container_view, contentFragment) // R.id.container - это id контейнера, в котором вы хотите отобразить фрагмент
-                        .addToBackStack(null) // Добавление фрагмента в back stack
+                fragmentTransaction.add(R.id.fragment_container_view, contentFragment)
+                        .addToBackStack(null)
                         .commit();
 
 
