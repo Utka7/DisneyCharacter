@@ -15,16 +15,6 @@ import com.example.disneycharacter.R;
 import com.squareup.picasso.Picasso;
 
 public class ContentFragment extends Fragment {
-    private TextView name ;
-    private ImageView icon;
-    private TextView films;
-    private TextView shortFilms;
-    private TextView tvShows;
-    private TextView videoGames;
-    private TextView parkAttractions;
-    private TextView allies;
-    private TextView enemies;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +42,7 @@ public class ContentFragment extends Fragment {
             }
         }
 
-        // ...
+
         return view;
     }
 }

@@ -62,7 +62,6 @@ public class ListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         try {
             get();
         } catch (IOException e) {
@@ -83,19 +82,19 @@ public class ListFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException error) {
                 call.cancel();
-                latch.countDown();
+                loadDataFromDB(context);
+
             }
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 String responseBody = response.body().string();
                 handleResponse(responseBody);
-                latch.countDown();
             }
         });
+    }
 
-        latch.await(); // ожидание ответа от API
-
+    private void loadDataFromDB(Context context){
         AppDatabase db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "app.db").build();
         Executor executor = Executors.newSingleThreadExecutor();
 
@@ -107,11 +106,13 @@ public class ListFragment extends Fragment {
                 Log.d("MyTag", "This is DB try");
                 // Данные есть в базе данных, загружаем их и показываем пользователю
                 View view = getView();
-                if (view != null) {
-                    RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-                    CharacterAdapter adapter = new CharacterAdapter(context, characters);
-                    recyclerView.setAdapter(adapter);
-                }
+                getActivity().runOnUiThread(() -> {
+                    if (view != null) {
+                        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+                        CharacterAdapter adapter = new CharacterAdapter(context, characters);
+                        recyclerView.setAdapter(adapter);
+                    }
+                });
 
             }
         });
